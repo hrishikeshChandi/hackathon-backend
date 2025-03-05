@@ -63,8 +63,8 @@ def get_driver():
         {"profile.default_content_setting_values.geolocation": 2},
     )
     # chrome_options.add_argument("--headless")
-    service = Service(r"C:\webdrivers\chromedriver-win64\chromedriver.exe")
-    # service = Service(ChromeDriverManager().install())
+    # service = Service(r"C:\webdrivers\chromedriver-win64\chromedriver.exe")
+    service = Service(ChromeDriverManager().install())
     return webdriver.Chrome(service=service, options=chrome_options)
 
 
