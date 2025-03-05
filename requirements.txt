@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+flask
+selenium
+webdriver-manager
+pymongo
+mysql-connector-python
+python-multipart
+requests
