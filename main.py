@@ -203,15 +203,11 @@ def hospitals_info(city: str):
     hospital_elements = WebDriverWait(driver, 20).until(
         EC.presence_of_all_elements_located((By.CSS_SELECTOR, "div.c-estb-card"))
     )
-
-    # Add a counter to limit the number of hospitals
-    max_hospitals = 10
-    count = 0
     try:
         for hospital in hospital_elements:
-            if count >= max_hospitals:
-                break  # Exit the loop once 10 hospitals are added
-
+            if len(hospitals) == 10:
+                break
+            
             name = (
                 WebDriverWait(hospital, 10)
                 .until(EC.presence_of_element_located((By.CSS_SELECTOR, "h2")))
@@ -240,7 +236,6 @@ def hospitals_info(city: str):
                 .until(EC.presence_of_element_located((By.CSS_SELECTOR, "a")))
                 .get_attribute("href")
             )
-
             try:
                 rating = (
                     WebDriverWait(hospital, 15)
@@ -254,7 +249,6 @@ def hospitals_info(city: str):
             except Exception as e:
                 print(e)
                 rating = "--"
-
             hospitals.append(
                 {
                     "name": name,
@@ -264,8 +258,6 @@ def hospitals_info(city: str):
                     "link": link,
                 }
             )
-
-            count += 1  # Increment the count after each hospital is added
         return hospitals
     finally:
         driver.quit()
@@ -346,16 +338,10 @@ async def upload(
         # medicines = current_medicines.split(",")
         # medicines = [med.strip() for med in medicines]
         # compared_prices = price_comp(medicines)
-
         # compared_prices += "\n" + side_effects(medicines) + "\n"
-
-        # with open("./hello.txt", "w") as f:
+        # with open("./info.txt", "w") as f:
         #     f.write(compared_prices)
 
-        # all the processing with ai is done here
-        # here call price comparison function append it to the text given by ai
-        # at the end add these things side effects of current medicines in the end
-        # a file is saved with "reports.txt" and then return the text given by the model to the frontend
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
