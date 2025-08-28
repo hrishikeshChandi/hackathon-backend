@@ -1,7 +1,0 @@
-fastapi
-uvicorn
-selenium
-webdriver-manager
-python-multipart
-requests
-python-dotenv
