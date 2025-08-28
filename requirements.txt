@@ -1,6 +1,0 @@
-fastapi
-uvicorn
-selenium
-webdriver-manager
-python-multipart
-requests
