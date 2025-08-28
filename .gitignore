@@ -1,0 +1,10 @@
+.env
+
+__pycache__/
+*.py[cod]
+
+*.log
+
+audio_uploads.txt
+image_uploads.txt
+useless.txt
