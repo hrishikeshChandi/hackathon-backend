@@ -2,6 +2,7 @@ import uvicorn
 from fastapi import FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
 from routers import uploads, scraper
+from config.constants import HOST, PORT, MODULE
 
 app = FastAPI()
 
@@ -17,4 +18,4 @@ app.include_router(scraper.router)
 app.include_router(uploads.router)
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="127.0.0.1", port=1800, reload=True)
+    uvicorn.run(MODULE, host=HOST, port=PORT, reload=True)
